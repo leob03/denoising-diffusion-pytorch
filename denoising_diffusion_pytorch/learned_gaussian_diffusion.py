@@ -139,6 +139,7 @@ class LearnedGaussianDiffusion(GaussianDiffusion):
         kl = normal_kl(true_mean, true_log_variance_clipped, detached_model_mean, model_log_variance)
         kl = meanflat(kl) * NAT
 
+        #just for the first timestep
         decoder_nll = -discretized_gaussian_log_likelihood(x_start, means = detached_model_mean, log_scales = 0.5 * model_log_variance)
         decoder_nll = meanflat(decoder_nll) * NAT
 
